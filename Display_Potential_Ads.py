@@ -503,6 +503,7 @@ def displayPotentialAds(potentialAdUrlsDict, replaySettings, defaultValuesDict, 
         //var rightmostNumberedButton = 10;
         
         /// Create previous and next buttons
+        var maxNumPaginationButtons = 10;
         var prevButton = null;
         var nextButton = null;
         for(var i = 0; i < 2; i++)
@@ -521,7 +522,7 @@ def displayPotentialAds(potentialAdUrlsDict, replaySettings, defaultValuesDict, 
                 currentButton.id = "next_button";
                 currentButton.setAttribute("option_value", "next");
             }
-            currentButton.style.width = (Math.floor((1 / (numOptions + 2)) * 100)).toString() + pctChar;
+            currentButton.style.width = (Math.floor((1 / (maxNumPaginationButtons + 2)) * 100)).toString() + pctChar;
             currentButton.style.height = "auto";
             currentButton.onclick = function(){ 
                     var mainDiv = getClearedMainDiv();
@@ -631,7 +632,7 @@ def displayPotentialAds(potentialAdUrlsDict, replaySettings, defaultValuesDict, 
         paginationButtonRow.appendChild(prevButton);
 
         ///Create and add the numbered buttons
-        for(var optionIndex = 0; optionIndex < numOptions; optionIndex++)
+        for(var optionIndex = 0; optionIndex < maxNumPaginationButtons; optionIndex++)
         {
             var currentButton = document.createElement("button");
             paginationButtonRow.appendChild(currentButton);
@@ -639,8 +640,12 @@ def displayPotentialAds(potentialAdUrlsDict, replaySettings, defaultValuesDict, 
             currentButton.innerHTML = leftmostNumber + optionIndex;
             currentButton.id = leftmostNumber + optionIndex;
             currentButton.setAttribute("option_value", leftmostNumber + optionIndex);
-            currentButton.style.width = (Math.floor((1 / (numOptions + 2)) * 100)).toString() + pctChar;
+            currentButton.style.width = (Math.floor((1 / (maxNumPaginationButtons + 2)) * 100)).toString() + pctChar;
             currentButton.style.height = "auto";
+            if(optionIndex >= numOptions)
+            {
+                currentButton.style.display = "none";
+            }
             currentButton.onclick = function(){ 
                     var mainDiv = getClearedMainDiv();
                     var currentPageNum = parseInt(this.getAttribute("option_value"));
@@ -695,7 +700,7 @@ def displayPotentialAds(potentialAdUrlsDict, replaySettings, defaultValuesDict, 
                             currentButton.setAttribute("option_value", updatedNumber);
                         }
                     }
-                    */
+                    //*/
                 };
         }   
         /// Add next button     
