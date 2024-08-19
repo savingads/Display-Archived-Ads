@@ -3,10 +3,10 @@ This tool is used for displaying ads from a WARC file and it shows the live vers
 
 General structure for the command used for this tool:
 ```
-python3 Display_Potential_Ads.py /path/to/WARC/file.warc <seed URL>
+python3 Display_Archived_Ads.py /path/to/WARC/file.warc <seed URL>
 ```
 
 Example command used for an IGN web page:
 ```
-python3 Display_Potential_Ads.py data.warc.gz https://www.ign.com/tv/the-last-of-us-the-series
+python3 Display_Archived_Ads.py data.warc.gz https://www.ign.com/tv/the-last-of-us-the-series
 ```
